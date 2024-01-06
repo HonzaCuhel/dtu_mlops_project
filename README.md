@@ -20,12 +20,10 @@ We are using the [Twitter Financial News dataset](https://huggingface.co/dataset
 We are going to use a pre-trained BERT-like model and fine-tune it with the LoRA technique on the above-mentioned financial dataset. For example, the model we have in mind is DeBERTaV3, which is available on Hugging Face [here](https://huggingface.co/microsoft/deberta-v3-xsmall).
 
 > The DeBERTa V3 xsmall model comes with 12 layers and a hidden size of 384. It has only **22M** backbone parameters, with a vocabulary containing 128K tokens which introduces 48M parameters in the Embedding layer.
+
 This DeBERTa model has significantly fewer parameters compared to the classical RoBERTa-base (86M) and XLNet-base (92M), yet it achieves equal or better results on a majority of NLU tasks, such as on SQuAD 2.0 (F1/EM) or MNLI-m/mm (ACC).
 
 Since the DeBERTa model is available on Hugging Face, the inference and training processes should be straightforward, allowing us to spend more time on the MLOps aspects of the project.
-We intend to use pre-trained models due to limited time, and also train the model(s) additionally on our dataset. Since we are working on tweets then one of the models we plan to use is the [BERTweet](https://huggingface.co/docs/transformers/model_doc/bertweet) model which is the first public large-scale pre-trained language model for English Tweets.
-
-We might as well look into [ALBERT](https://huggingface.co/docs/transformers/model_doc/albert) and [DistilBERT](https://huggingface.co/docs/transformers/model_doc/distilbert) models, which optimize the BERT model and make the training process faster. That would be beneficial for us due to time constraints.
 
 ## Project structure
 
