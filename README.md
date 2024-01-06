@@ -2,6 +2,31 @@
 
 A short description of the project.
 
+<b>Authors:</b>
+- Jan Cuhel
+- Adam Jirkovsky
+- Mikhail Poludin
+
+## Overall goal of the project
+The goal of the project is to use power of the Natural Language Processing to solve a classification task of predicting sentiment of finance-related tweets.
+
+## What framework are you going to use and you do you intend to include the framework into your project?
+We plan to use Hugging Face to obtain the dataset and the baseline model. We will leverage the [Transformers](https://github.com/huggingface/transformers) library to manipulate with the model. [LoRA](https://arxiv.org/pdf/2106.09685.pdf) will be used to finetune the selected model for our specific task. We plan to use DVC for data versioning, Weights and Biases for experiment tracking, and Hydra to ensure reproducibility. The project will also use Docker.
+
+## What data are you going to run on (initially, may change)?
+We are using the [Twitter Financial News dataset](https://huggingface.co/datasets/zeroshot/twitter-financial-news-sentiment) available through [HuggingFace Datasets](https://huggingface.co/docs/datasets/index). The dataset is an english sentiment analysis dataset containing an annotated corpus of finance-related tweets. The dataset is divided into 2 splits: `train` and `validation`. `train` split contains `9 938` samples and `validation` contains `2 486` samples. Each sample contains a text and its corresponding label. The dataset was chosen because it is quite simple, interesting and straightforward which makes it a great dataset for the purposes of this project.
+
+## What deep learning models do you expect to use? :brain:
+We are going to use a pre-trained BERT-like model and fine-tune it with the LoRA technique on the above-mentioned financial dataset. For example, the model we have in mind is DeBERTaV3, which is available on Hugging Face [here](https://huggingface.co/microsoft/deberta-v3-xsmall).
+
+> The DeBERTa V3 xsmall model comes with 12 layers and a hidden size of 384. It has only **22M** backbone parameters, with a vocabulary containing 128K tokens which introduces 48M parameters in the Embedding layer.
+This DeBERTa model has significantly fewer parameters compared to the classical RoBERTa-base (86M) and XLNet-base (92M), yet it achieves equal or better results on a majority of NLU tasks, such as on SQuAD 2.0 (F1/EM) or MNLI-m/mm (ACC).
+
+Since the DeBERTa model is available on Hugging Face, the inference and training processes should be straightforward, allowing us to spend more time on the MLOps aspects of the project.
+We intend to use pre-trained models due to limited time, and also train the model(s) additionally on our dataset. Since we are working on tweets then one of the models we plan to use is the [BERTweet](https://huggingface.co/docs/transformers/model_doc/bertweet) model which is the first public large-scale pre-trained language model for English Tweets.
+
+We might as well look into [ALBERT](https://huggingface.co/docs/transformers/model_doc/albert) and [DistilBERT](https://huggingface.co/docs/transformers/model_doc/distilbert) models, which optimize the BERT model and make the training process faster. That would be beneficial for us due to time constraints.
+
 ## Project structure
 
 The directory structure of the project looks like this:
