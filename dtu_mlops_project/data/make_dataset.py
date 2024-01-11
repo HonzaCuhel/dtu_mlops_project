@@ -1,7 +1,8 @@
 from datasets import load_dataset, load_from_disk
 import os
 
-if __name__ == '__main__':
+
+def main():
     if os.path.exists("data/raw/train") and os.path.exists("data/raw/val"):
         train_set_raw = load_from_disk(os.path.join("data", "raw", "train"))
         val_set = load_from_disk(os.path.join("data", "raw", "val"))
@@ -15,4 +16,7 @@ if __name__ == '__main__':
     split_dict["train"].save_to_disk(os.path.join("data", "processed", "train"))
     split_dict["test"].save_to_disk(os.path.join("data", "processed", "test"))
     val_set.save_to_disk(os.path.join("data", "processed", "val"))
-    
+
+
+if __name__ == '__main__':
+    main()
