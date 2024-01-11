@@ -21,8 +21,8 @@ def test_data():
     assert os.path.exists(os.path.join(_PATH_DATA, "processed", "test")), "Processed test data folder not found"
     assert os.path.exists(os.path.join(_PATH_DATA, "processed", "val")), "Processed val data folder not found"
 
-    train_set = load_from_disk(os.path.join(_PATH_DATA, "raw", "train"))
-    val_set = load_from_disk(os.path.join(_PATH_DATA, "raw", "val"))
+    train_set = load_from_disk(os.path.join(_PATH_DATA, "processed", "train"))
+    val_set = load_from_disk(os.path.join(_PATH_DATA, "processed", "val"))
     test_set = load_from_disk(os.path.join(_PATH_DATA, "processed", "test"))
     
     labels = _check_dataset(train_set, "train")
