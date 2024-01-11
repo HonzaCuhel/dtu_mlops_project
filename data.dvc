@@ -9,6 +9,33 @@ outs:
       remote_storage:
         etag: 089a9fd7f69cd583031001
         version_id: '1704972342644634'
+  - relpath: processed/test/data-00000-of-00001.arrow
+    md5: 0cfe10eaef19159f14d54797214d241b
+    size: 247976
+  - relpath: processed/test/dataset_info.json
+    md5: 66668b0f6f2fa3024ae14f922f161b82
+    size: 1247
+  - relpath: processed/test/state.json
+    md5: 32a5feef57a7bddd3b72d21f0f6ca3b5
+    size: 250
+  - relpath: processed/train/data-00000-of-00001.arrow
+    md5: 2b4b43684bcc47551931d6b4fd1bd354
+    size: 694528
+  - relpath: processed/train/dataset_info.json
+    md5: 66668b0f6f2fa3024ae14f922f161b82
+    size: 1247
+  - relpath: processed/train/state.json
+    md5: 80745f1d59c9fd578180ff3c9a2f4b33
+    size: 250
+  - relpath: processed/val/data-00000-of-00001.arrow
+    md5: 68d8086049bccbbaaefcc09462fac76f
+    size: 238640
+  - relpath: processed/val/dataset_info.json
+    md5: 66668b0f6f2fa3024ae14f922f161b82
+    size: 1247
+  - relpath: processed/val/state.json
+    md5: b832405b1210eb56081ef9d7753f516d
+    size: 255
   - relpath: raw/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
@@ -16,3 +43,21 @@ outs:
       remote_storage:
         etag: 08f5e7def69cd583031001
         version_id: '1704972342768629'
+  - relpath: raw/train/data-00000-of-00001.arrow
+    md5: b021c356710801309edd406d5945b99d
+    size: 942192
+  - relpath: raw/train/dataset_info.json
+    md5: 66668b0f6f2fa3024ae14f922f161b82
+    size: 1247
+  - relpath: raw/train/state.json
+    md5: 27b997b610688201b38d1ef81792b5b9
+    size: 250
+  - relpath: raw/val/data-00000-of-00001.arrow
+    md5: 68d8086049bccbbaaefcc09462fac76f
+    size: 238640
+  - relpath: raw/val/dataset_info.json
+    md5: 66668b0f6f2fa3024ae14f922f161b82
+    size: 1247
+  - relpath: raw/val/state.json
+    md5: b832405b1210eb56081ef9d7753f516d
+    size: 255
