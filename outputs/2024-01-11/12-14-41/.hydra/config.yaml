@@ -1,8 +1,0 @@
-hyperparameters:
-  seed: 228
-  cuda: true
-  lora_rank: 16
-  batch_size: 50
-  train_epochs: 3
-  learning_rate: 0.0001
-  store_weights_to: models/some_model/some_model.pt
