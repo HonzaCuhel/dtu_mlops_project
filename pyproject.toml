@@ -7,7 +7,7 @@ name = "dtu_mlops_project"
 version = "0.0.1"
 description = "A short description of the project."
 authors = [
-  { name = "Jan Cuhel, Adam Jirkovsky, Mikhail Poludin", email = "your@email.com" },
+  { name = "Jan Cuhel, Adam Jirkovsky, Mikhail Poludin, Antonis Pavlou", email = "your@email.com" },
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
