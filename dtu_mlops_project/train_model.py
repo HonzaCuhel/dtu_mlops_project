@@ -7,7 +7,7 @@ from transformers import (
 )
 import evaluate
 import numpy as np
-from datasets import load_dataset
+from datasets import load_from_disk
 import wandb
 
 
@@ -37,14 +37,17 @@ def main():
     wandb.init(project="train", entity="dtu-mlops-financial-tweets")
 
     # Load data
-    tw_fin = load_dataset("zeroshot/twitter-financial-news-sentiment")
+    #tw_fin = load_dataset("zeroshot/twitter-financial-news-sentiment")
+    train_set = load_from_disk("data/processed/train")
+    val_set = load_from_disk("data/processed/val")
 
     def preprocess_function(examples):
         return tokenizer(examples["text"], truncation=True)
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     # Preprocess data
-    tokenized_tw_fin = tw_fin.map(preprocess_function, batched=True)
+    tokenized_train_set = train_set.map(preprocess_function, batched=True)
+    tokenized_val_set = val_set.map(preprocess_function, batched=True)
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 
     id2label = {
@@ -77,8 +80,8 @@ def main():
     trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=tokenized_tw_fin["train"],
-        eval_dataset=tokenized_tw_fin["validation"],
+        train_dataset=tokenized_train_set,
+        eval_dataset=tokenized_val_set,
         tokenizer=tokenizer,
         data_collator=data_collator,
         compute_metrics=compute_metrics,
