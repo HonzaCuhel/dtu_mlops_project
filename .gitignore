@@ -182,3 +182,5 @@ outputs/
 
 /data
 /models
+runs/
+wandb/
