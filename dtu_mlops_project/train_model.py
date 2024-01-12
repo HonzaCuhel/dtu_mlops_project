@@ -12,7 +12,7 @@ import wandb
 import logging
 import sys
 import hydra
-from hydra.utils import get_original_cwd, to_absolute_path
+from hydra.utils import get_original_cwd
 import os
 
 logging.basicConfig(stream=sys.stdout)
@@ -46,6 +46,7 @@ def main(cfg):
 
     train_set_path = os.path.join(original_working_dir, cfg.dataset.train_set_path)
     val_set_path = os.path.join(original_working_dir, cfg.dataset.val_set_path)
+    output_dir = os.path.join(original_working_dir, output_dir)
 
     wandb.init(project="train", entity="dtu-mlops-financial-tweets")
 

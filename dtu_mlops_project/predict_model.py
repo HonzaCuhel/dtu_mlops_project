@@ -35,5 +35,8 @@ def predict(text: str) -> str:
 
 
 if __name__ == "__main__":
-    text = "I think $TSLA is going to the moon!"
-    predict(text)
+    # text = "I think $TSLA is going to the moon!"
+    text = None
+    while text != "exit":
+        text = input("Enter text to predict sentiment: ")
+        predict(text)
