@@ -24,7 +24,7 @@ def test_data():
     train_set = load_from_disk(os.path.join(_PATH_DATA, "processed", "train"))
     val_set = load_from_disk(os.path.join(_PATH_DATA, "processed", "val"))
     test_set = load_from_disk(os.path.join(_PATH_DATA, "processed", "test"))
-    
+
     labels = _check_dataset(train_set, "train")
     assert labels == set(range(3)), "Missing labels in the train dataset"
     _ = _check_dataset(val_set, "validation")

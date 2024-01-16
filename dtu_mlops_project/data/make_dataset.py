@@ -11,7 +11,7 @@ def main():
         train_set_raw.save_to_disk(os.path.join("data", "raw", "train"))
         val_set = load_dataset("zeroshot/twitter-financial-news-sentiment", split="validation")
         val_set.save_to_disk(os.path.join("data", "raw", "val"))
-    
+
     split_dict = train_set_raw.train_test_split(test_size=2500, seed=42)
     split_dict["train"].save_to_disk(os.path.join("data", "processed", "train"))
     split_dict["test"].save_to_disk(os.path.join("data", "processed", "test"))
