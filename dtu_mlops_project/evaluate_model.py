@@ -9,7 +9,7 @@ def eval_model(model_path, dataset_path):
     m_pipeline = pipeline(
         "text-classification",
         model=model_path,
-        tokenizer=AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall"),
+        tokenizer=AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall", use_fast=False),
     )
     # Load dataset
     dataset = load_from_disk(dataset_path)
@@ -31,6 +31,6 @@ def eval_model(model_path, dataset_path):
 
 
 if __name__ == "__main__":
-    model_path = "./models/financial_tweets_sentiment_model/"
+    model_path = "./models/financial_tweets_sentiment_model_10_ep/"
     dataset_path = "./data/processed/test"
     eval_model(model_path, dataset_path)
