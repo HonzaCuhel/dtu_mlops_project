@@ -1,9 +1,9 @@
 steps:
 # Copy files from Google Cloud Storage
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/config.json', './models/financial_tweets_sentiment_model/']
+  args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/config.json', './models/financial_tweets_sentiment_model/config.json']
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/model.safetensors', './models/financial_tweets_sentiment_model/']
+  args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/model.safetensors', './models/financial_tweets_sentiment_model/model.safetensors']
 
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
