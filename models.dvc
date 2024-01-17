@@ -1,6 +1,25 @@
 outs:
-- md5: 6001b1f7987e7a25a378a5fae5e70170.dir
-  size: 283350007
-  nfiles: 3
-  hash: md5
+- hash: md5
   path: models
+  files:
+  - relpath: .gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+    cloud:
+      remote_storage:
+        etag: 08c59cb293e1d783031001
+        version_id: '1705059375943237'
+  - relpath: financial_tweets_sentiment_model/config.json
+    md5: 741286b8bdbaa08eb04c6f6496ca475d
+    size: 1035
+    cloud:
+      remote_storage:
+        etag: 08f386bd93e1d783031001
+        version_id: '1705059376120691'
+  - relpath: financial_tweets_sentiment_model/model.safetensors
+    md5: 77be970572f94463eae52b08fb96a11b
+    size: 283348972
+    cloud:
+      remote_storage:
+        etag: 08aa94839ee1d783031001
+        version_id: '1705059398240810'

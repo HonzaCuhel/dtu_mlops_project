@@ -31,6 +31,6 @@ def eval_model(model_path, dataset_path):
 
 
 if __name__ == "__main__":
-    model_path = "./models/financial_tweets_sentiment_model/"
+    model_path = "./models/financial_tweets_sentiment_model_10_ep/"
     dataset_path = "./data/processed/test"
     eval_model(model_path, dataset_path)
