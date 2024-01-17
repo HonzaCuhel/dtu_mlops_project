@@ -26,27 +26,72 @@ This DeBERTa model has significantly fewer parameters compared to the classical 
 
 Since the DeBERTa model is available on Hugging Face, the inference and training processes should be straightforward, allowing us to spend more time on the MLOps aspects of the project.
 
-## Run training and inference inside a Docker container
-### Training:
-```shell
-you@your-pc:~.../dtu_mlops_project$ docker build -t trainer_image -f dockerfiles/train_model.dockerfile .
-```
-```shell
-you@your-pc:~.../dtu_mlops_project$ docker run -it --gpus all --name trainer_container -v $(pwd)/models:/models/ trainer_image
-```
-### Inference:
-```shell
-you@your-pc:~.../dtu_mlops_project$ docker build -t predictor_image -f dockerfiles/predict_model.dockerfile .
-```
-```shell
-you@your-pc:~.../dtu_mlops_project$ docker run -it --gpus all --name predictor_container predictor_image
-```
+## Commands
 
+#### Process raw data into processed data
+```shell
+make data
+```
+#### Train model
 During the training run you will be prompted your W&B API key which you can find in your profile settings on weights and biases website.
+##### On CPU
+```shell
+make train_cpu_model
+```
+##### On GPU
+```shell
+make train_gpu_model
+```
+<!-- You can remove the `--gpu all` switch for gpu-less machines.
 
-You can remove the `--gpu all` switch for gpu-less machines.
+The `-v $(pwd)/models:/models/` makes the `models/` folder shared between the host and the container so that the learned weights were saved to the host. -->
+#### Inference on CPU:
+```shell
+make infer_cpu_model
+```
+#### Inference on GPU:
+```shell
+make infer_gpu_model
+```
+#### Local Build of Inference API:
+```shell
+make build_api_local
+```
 
-The `-v $(pwd)/models:/models/` makes the `models/` folder shared between the host and the container so that the learned weights were saved to the host.
+Now, go to [here](http://0.0.0.0:8080/) to open the app.
+
+The app offers 4 endpoints:
+- [`/`](http://0.0.0.0:8080/) - Health check
+- [`/docs`](http://0.0.0.0:8080/docs) - Documentation
+- [`/metrics`](http://0.0.0.0:8080/docs) - Endpoint that serves Prometheus metrics.
+- [`/predict_batch/`](http://0.0.0.0:8080/predict_batch/) - Endpoint that infers a trained model.
+
+Example of how to call the `/predict_batch/` endpoint:
+- Using `curl`
+```shell
+curl -X 'POST' \
+  'http://0.0.0.0:8080/predict_batch/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '["I think $TSLA is going to the moon!"]'
+```
+- Using Python
+```python
+import requests
+
+url = "https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app/predict_batch/"
+headers = {
+    "accept": "application/json",
+    "Content-Type": "application/json",
+}
+data = [
+    "I think $TSLA is going to the moon!"
+]
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+```
+
 
 ## Project structure
 
@@ -56,9 +101,13 @@ The directory structure of the project looks like this:
 
 ├── Makefile             <- Makefile with convenience commands like `make data` or `make train`
 ├── README.md            <- The top-level README for developers using this project.
+├── api                  <- Source code for building an inference AP
+│
 ├── data
 │   ├── processed        <- The final, canonical data sets for modeling.
 │   └── raw              <- The original, immutable data dump.
+│
+├── dockerfiles          <- Folder with docker files
 │
 ├── docs                 <- Documentation folder
 │   │
@@ -69,8 +118,6 @@ The directory structure of the project looks like this:
 │   └── source/          <- Source directory for documentation files
 │
 ├── models               <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks            <- Jupyter notebooks.
 │
 ├── pyproject.toml       <- Project configuration file
 │
@@ -87,19 +134,15 @@ The directory structure of the project looks like this:
 │   │
 │   ├── __init__.py      <- Makes folder a Python module
 │   │
+│   ├── configs          <- Config files for Hydra
+│   │   ├── train_config.yaml   <- A `.yaml` config for training
 │   ├── data             <- Scripts to download or generate data
 │   │   ├── __init__.py
 │   │   └── make_dataset.py
-│   │
-│   ├── models           <- model implementations, training script and prediction script
-│   │   ├── __init__.py
-│   │   ├── model.py
-│   │
-│   ├── visualization    <- Scripts to create exploratory and results oriented visualizations
-│   │   ├── __init__.py
-│   │   └── visualize.py
-│   ├── train_model.py   <- script for training the model
-│   └── predict_model.py <- script for predicting from a model
+│   ├── evaluate_model.py       <- script for evaluating trained model on test dataset
+│   ├── hydra_usage_example.py  <- script for showing how to work with hydra
+│   ├── train_model.py          <- script for training the model
+│   └── predict_model.py        <- script for predicting from a model
 │
 └── LICENSE              <- Open-source license if one is chosen
 ```

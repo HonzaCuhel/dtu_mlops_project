@@ -9,3 +9,5 @@ sentencepiece
 scikit-learn
 wandb
 accelerate
+dvc
+dvc[gs]

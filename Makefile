@@ -37,14 +37,38 @@ clean:
 #################################################################################
 
 ## Process raw data into processed data
-data:
+data: requirements
 	python $(PROJECT_NAME)/data/make_dataset.py
 
+## Pull the latest data and models from the remote storage
+pull_data:
+	pip install "dvc[gs]"
+	dvc pull
 
-push_train_docker:
-	docker build --platform linux/amd64 -t trainer_image -f dockerfiles/train_model.dockerfile .
-	docker tag trainer_image gcr.io/sacred-flight-410716/trainer_image:latest
-	docker push gcr.io/sacred-flight-410716/trainer_image:latest
+## Build a local API for inferencing the model
+build_api_local: pull_data
+	docker build -t deployed_model:latest -f api/Dockerfile .
+	docker run -p 8080:8080 -e PORT=8080 deployed_model:latest
+
+## Training model on GPU
+train_gpu_model: pull_data
+	docker build -t trainer_image -f dockerfiles/train_model.dockerfile .
+	docker run -it --gpus all -v ./models:/models/ trainer_image
+
+## Training model on CPU
+train_cpu_model: pull_data
+	docker build -t trainer_image -f dockerfiles/train_model.dockerfile .
+	docker run -it -v ./models:/models/ trainer_image
+
+## Inferencing model on GPU
+infer_gpu_model: pull_data
+	docker build -t predictor_image -f dockerfiles/predict_model.dockerfile .
+	docker run -it --gpus all predictor_image
+
+## Inferencing model on CPU
+infer_cpu_model: pull_data
+	docker build -t predictor_image -f dockerfiles/predict_model.dockerfile .
+	docker run -it predictor_image
 
 #################################################################################
 # Documentation RULES                                                           #

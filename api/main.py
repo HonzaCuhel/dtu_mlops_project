@@ -10,8 +10,8 @@ app = FastAPI()
 Instrumentator().instrument(app).expose(app)
 
 
-model = AutoModelForSequenceClassification.from_pretrained("./models/financial_tweets_sentiment_model/")
-tokenizer = AutoTokenizer.from_pretrained("./models/financial_tweets_sentiment_mode/")
+model = AutoModelForSequenceClassification.from_pretrained("../models/financial_tweets_sentiment_model/")
+tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall", use_fast=True)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -20,7 +20,6 @@ if torch.cuda.is_available():
 
 model.to(device)
 model.eval()
-
 
 @app.get("/")
 def root():
@@ -43,7 +42,7 @@ def classify(texts: List[str]):
 
 
 @app.post("/predict_batch/")
-async def cv_model(texts: List[str]):
+def predict_sentiment(texts: List[str]):
     # Remove duplicates
     texts = list(set(texts))
     # Classify
@@ -59,3 +58,11 @@ async def cv_model(texts: List[str]):
 
 # uvicorn --reload --port 8000 main:app
 # reload => when saved, the server will reload
+# curl -X 'POST' \
+#   'http://127.0.0.1:8000/predict_batch/' \
+#   -H 'accept: application/json' \
+#   -H 'Content-Type: application/json' \
+#   -d '[
+#   "Tesla is going down",
+#   "Apple is going up"
+# ]'

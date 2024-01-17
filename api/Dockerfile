@@ -1,13 +1,18 @@
-FROM python:3.9
-WORKDIR /code
-COPY ./requirements.txt /code/requirements.txt
+FROM python:3.9-slim
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-COPY main.py /code/main.py
-RUN mkdir /code/models
-COPY ../models/financial_tweets_sentiment_model /code/models/financial_tweets_sentiment_model
+EXPOSE $PORT
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+WORKDIR /
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    software-properties-common \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-# docker build -t my_fastapi_app .
-# docker run --name my_fastapi_app_container -p 80:80 my_fastapi_app
+COPY api/requirements.txt app/requirements.txt
+COPY api/main.py app/main.py
+COPY models/financial_tweets_sentiment_model/ models/financial_tweets_sentiment_model/
+RUN pip install --upgrade -r app/requirements.txt
+
+# CMD exec uvicorn app.main:app --port 80 --host 0.0.0.0 --workers 1
+CMD exec uvicorn app.main:app --port $PORT --host 0.0.0.0 --workers 1
