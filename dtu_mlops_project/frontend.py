@@ -12,7 +12,7 @@ def main():
         response = requests.post(ml_container_url, headers=header, json=payload)
 
         if response.status_code == 200:
-            prediction = response.json().get("output", "N/A")
+            prediction = response.json().get("output", ["N/A"])[0]
             st.write("Prediction:", prediction)
         else:
             st.error(f"Error: {response.status_code} - {response.text}")
