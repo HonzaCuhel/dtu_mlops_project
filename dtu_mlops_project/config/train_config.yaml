@@ -1,0 +1,15 @@
+hyperparameters:
+  seed: 228
+  model_id: microsoft/deberta-v3-xsmall
+  lr: 3e-05
+  batch_size: 64
+  num_epochs: 10
+  output_dir: models/financial_tweets_sentiment_model_10_ep
+  train_log_dir: ./runs
+  weight_decay: 0.01
+  eval_strategy: epoch
+  save_strategy: epoch
+
+dataset:
+  train_set_path: data/processed/train
+  val_set_path: data/processed/val
