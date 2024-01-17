@@ -6,11 +6,12 @@ A short description of the project.
 - Jan Cuhel
 - Adam Jirkovsky
 - Mikhail Poludin
+- Antonis Pavlou
 
 ## Overall goal of the project
 The goal of the project is to use power of the Natural Language Processing to solve a classification task of predicting sentiment of finance-related tweets.
 
-## What framework are you going to use and you do you intend to include the framework into your project?
+## What framework are you going to use and how do you intend to include the framework into your project?
 We plan to use Hugging Face to obtain the dataset and the baseline model. We will leverage the [Transformers](https://github.com/huggingface/transformers) library to manipulate with the model. [LoRA](https://arxiv.org/pdf/2106.09685.pdf) will be used to finetune the selected model for our specific task. We plan to use DVC for data versioning, Weights and Biases for experiment tracking, and Hydra to ensure reproducibility. The project will also use Docker.
 
 ## What data are you going to run on (initially, may change)?
