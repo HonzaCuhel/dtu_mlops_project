@@ -7,19 +7,19 @@ outs:
     size: 0
     cloud:
       remote_storage:
-        etag: 08c59cb293e1d783031001
-        version_id: '1705059375943237'
+        etag: 08e98982dfeae483031001
+        version_id: '1705508627055849'
   - relpath: financial_tweets_sentiment_model/config.json
     md5: 741286b8bdbaa08eb04c6f6496ca475d
     size: 1035
     cloud:
       remote_storage:
-        etag: 08f386bd93e1d783031001
-        version_id: '1705059376120691'
+        etag: 08b2e089dfeae483031001
+        version_id: '1705508627181618'
   - relpath: financial_tweets_sentiment_model/model.safetensors
     md5: 77be970572f94463eae52b08fb96a11b
     size: 283348972
     cloud:
       remote_storage:
-        etag: 08aa94839ee1d783031001
-        version_id: '1705059398240810'
+        etag: 08f2e0a0e1eae483031001
+        version_id: '1705508631752818'
