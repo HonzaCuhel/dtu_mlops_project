@@ -1,0 +1,32 @@
+steps:
+# Copy files from Google Cloud Storage
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/config.json', './models/financial_tweets_sentiment_model/']
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/model.safetensors', './models/financial_tweets_sentiment_model/']
+
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/deployed_model:latest', '-f', 'api/Dockerfile', '.']
+  id: 'Build the container image'
+  waitFor: ["-"]
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/deployed_model:latest']
+  id: 'Push the container image to Container Registry'
+  waitFor: ["Build the container image"]
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'deployed-financial-tweet-sentiment'
+  - '--image'
+  - 'gcr.io/$PROJECT_ID/deployed_model:latest'
+  - '--region'
+  - 'europe-west1'
+  id: 'Deploy container image to Cloud Run'
+  waitFor: ["Push the container image to Container Registry"]
+options:
+  logging: CLOUD_LOGGING_ONLY

@@ -8,7 +8,6 @@ RUN apt update && \
 COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
 COPY dtu_mlops_project/ dtu_mlops_project/
-COPY data/ data/
 COPY models/ models/
 
 WORKDIR /

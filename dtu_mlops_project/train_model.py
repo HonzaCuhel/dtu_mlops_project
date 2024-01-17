@@ -1,12 +1,16 @@
+import evaluate
+import numpy as np
+import wandb
+from datasets import load_from_disk
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
     DataCollatorWithPadding,
-    TrainingArguments,
     Trainer,
+    TrainingArguments,
 )
+
 import evaluate
-import numpy as np
 from datasets import load_from_disk
 import wandb
 import logging
@@ -17,7 +21,6 @@ import os
 
 logging.basicConfig(stream=sys.stdout)
 logger = logging.getLogger(__name__)
-
 
 accuracy = evaluate.load("accuracy")
 
@@ -55,6 +58,7 @@ def main(cfg):
     train_set = load_from_disk(train_set_path)
     val_set = load_from_disk(val_set_path)
 
+
     def preprocess_function(examples):
         return tokenizer(examples["text"], truncation=True)
 
@@ -88,7 +92,7 @@ def main(cfg):
         weight_decay=weight_decay,
         evaluation_strategy=eval_strategy,
         save_strategy=save_strategy,
-        load_best_model_at_end=True
+        load_best_model_at_end=True,
     )
     # Create trainer
     trainer = Trainer(
