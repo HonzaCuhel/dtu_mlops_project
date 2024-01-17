@@ -3,11 +3,14 @@ evaluate==0.4.1
 hydra-core==1.3.2
 numpy==1.26.3
 pytest==7.4.4
+rich==13.7.0
+wandb
+ruff==0.1.11
+pre-commit
 torch==2.1.2
 transformers==4.36.2
 sentencepiece
 scikit-learn
-wandb
 accelerate
 dvc
 dvc[gs]

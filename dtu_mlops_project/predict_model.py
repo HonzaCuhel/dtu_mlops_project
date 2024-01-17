@@ -1,11 +1,11 @@
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
 def predict(text: str) -> str:
-    """Run prediction. """
+    """Run prediction."""
     saved_model = "./models/financial_tweets_sentiment_model/"
-    tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall")
+    tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall", use_fast=False)
     encoded_input = tokenizer(text, return_tensors="pt")
     id2label = {
         0: "Bearish",
