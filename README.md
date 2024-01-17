@@ -25,6 +25,28 @@ This DeBERTa model has significantly fewer parameters compared to the classical 
 
 Since the DeBERTa model is available on Hugging Face, the inference and training processes should be straightforward, allowing us to spend more time on the MLOps aspects of the project.
 
+## Run training and inference inside a Docker container
+### Training:
+```shell
+you@your-pc:~.../dtu_mlops_project$ docker build -t trainer_image -f dockerfiles/train_model.dockerfile .
+```
+```shell
+you@your-pc:~.../dtu_mlops_project$ docker run -it --gpus all --name trainer_container -v $(pwd)/models:/models/ trainer_image
+```
+### Inference:
+```shell
+you@your-pc:~.../dtu_mlops_project$ docker build -t predictor_image -f dockerfiles/predict_model.dockerfile .
+```
+```shell
+you@your-pc:~.../dtu_mlops_project$ docker run -it --gpus all --name predictor_container predictor_image
+```
+
+During the training run you will be prompted your W&B API key which you can find in your profile settings on weights and biases website.
+
+You can remove the `--gpu all` switch for gpu-less machines.
+
+The `-v $(pwd)/models:/models/` makes the `models/` folder shared between the host and the container so that the learned weights were saved to the host.
+
 ## Project structure
 
 The directory structure of the project looks like this:
