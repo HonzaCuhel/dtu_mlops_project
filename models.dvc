@@ -22,4 +22,4 @@ outs:
     cloud:
       remote_storage:
         etag: 08f2e0a0e1eae483031001
-        version_id: '1705508631752818'
+        version_id: '1705511332884868'
