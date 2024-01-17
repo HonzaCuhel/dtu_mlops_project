@@ -23,3 +23,9 @@ outs:
       remote_storage:
         etag: 08aa94839ee1d783031001
         version_id: '1705059398240810'
+  - relpath: financial_tweets_sentiment_model_10_ep/config.json
+    md5: 741286b8bdbaa08eb04c6f6496ca475d
+    size: 1035
+  - relpath: financial_tweets_sentiment_model_10_ep/model.safetensors
+    md5: ba644569b1ed3f028d8e78f470b79c93
+    size: 283348972
