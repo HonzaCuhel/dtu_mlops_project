@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
---- question 1 fill here ---
+27
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+--- s240507, question 2 fill here ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -130,6 +130,8 @@ end of the project.
 > Answer:
 
 --- question 3 fill here ---
+
+**TODO** We used Hugging Face to obtain the dataset and the baseline model. With that, we used the Transformers library to train the model. We used DVC for data versioning, Weights and Biases to track the training cycles, and Hydra to ensure reproducibility. Also, Google Cloud Storage was used to store the split dataset along with the model weights.
 
 ## Coding environment
 
@@ -149,6 +151,9 @@ end of the project.
 > Answer:
 
 --- question 4 fill here ---
+To ensure easy installation of all dependencies we used the `requirements.txt` file. We tried using both `pip` and `pipreqs` to generate the file. First, `pip freeze > requirements.txt` was used, but later we switched to generation with `pipreqs` and added a couple of additional dependencies manually (e.g. *sentencepiece*). This way, the `requirements.txt` looks more sane.
+
+As we have successfully launched both training and inference inside a Docker container, which installs all the dependencies with `RUN pip install -r requirements.txt --no-cache-dir` and `RUN pip install . --no-deps --no-cache-dir`, we know that the new team member wouldn't struggle to do the same.
 
 ### Question 5
 
@@ -164,6 +169,8 @@ end of the project.
 > Answer:
 
 --- question 5 fill here ---
+
+Yes, we used a cookiecutter template to initialize the project structure. Specifically, the **TODO** template...
 
 ### Question 6
 
@@ -223,7 +230,15 @@ end of the project.
 >
 > Answer:
 
---- question 9 fill here ---
+Yes, during the development we worked on separate branches, which were created for each task for each person. After the person was done with his task, he created a pull request on GitHub and each of the other team members needed to approve it before merging.
+
+We had the `main` branch for deployment and the `dev` branch to merge our pull requests to.
+
+An example of our development workflow:
+* In the morning we allocated tasks for everyone. For instance, the team member receives *"integrate hydra for configs and logging"* task.
+* This person creates a new branch from `dev` and works in it.
+* After he is done, he publishes his branch to GitHub and creates a PR to merge into `dev`.
+* In the end, we all approve the PR and finally merge it.
 
 ### Question 10
 
@@ -273,7 +288,7 @@ end of the project.
 >
 > Answer:
 
---- question 12 fill here ---
+Yes, to use the config files we utilized Hydra. I.e. the config file for training is located in `config/train_config.yaml`. It is directly embedded in the `train_model.py` script, which could be further improved to passing the config name as an argument. After each training cycle, Hydra saves the information of the used config file to the `outpurs/` folder. This folder is not tracked on GitHub.
 
 ### Question 13
 
@@ -306,6 +321,9 @@ end of the project.
 > Answer:
 
 --- question 14 fill here ---
+**TODO text**
+![my_image](figures/wandb_screen.png)
+
 
 ### Question 15
 
