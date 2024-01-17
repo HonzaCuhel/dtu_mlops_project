@@ -338,7 +338,9 @@ Yes, to use the config files we utilized Hydra. I.e. the config file for trainin
 >
 > Answer:
 
---- question 15 fill here ---
+Initially, our project setup includes two Docker files, needed for the deployment and training of our machine learning model. These files are conveniently located in the `dockerfiles/`` directory. Specifically, we have: [predict_model.dockerfile](../dockerfiles/predict_model.dockerfile) dedicated to configuring the prediction environment, and [train_model.dockerfile](../dockerfiles/train_model.dockerfile) designed for setting up the training environment.
+
+Detailed instructions for utilizing these Docker files are written in the main README.md file of our repository. Specifically, it also describes how to execute the training container with a shared volume, ensuring that the model weights generated during the training process are conveniently stored on the host PC to the local `models/` directory.
 
 ### Question 16
 
@@ -509,4 +511,8 @@ Yes, to use the config files we utilized Hydra. I.e. the config file for trainin
 >
 > Answer:
 
---- question 27 fill here ---
+--- question 27 fill here --- **TODO EVERYONE**
+
+All members contributed equally to the code and this report. Each project day we had 1+ zoom calls to assign the tasks to each other for the day. Each team member was present on every call.
+
+Student s240507 was in charge of things such as: Hydra setup, Docker containers for training and inference, actual training of the model.
