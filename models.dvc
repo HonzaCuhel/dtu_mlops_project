@@ -19,3 +19,7 @@ outs:
   - relpath: financial_tweets_sentiment_model/model.safetensors
     md5: ba644569b1ed3f028d8e78f470b79c93
     size: 283348972
+    cloud:
+      remote_storage:
+        etag: 08f2e0a0e1eae483031001
+        version_id: '1705508631752818'
