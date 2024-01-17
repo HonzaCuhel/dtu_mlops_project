@@ -30,6 +30,9 @@ outs:
       remote_storage:
         etag: 08dcfd87c6b5d583031001
         version_id: '1704978951569116'
+  - relpath: processed/train/cache-23eca3b77ac6ab4e.arrow
+    md5: 44366a4d362fed459acf17a25a3faabf
+    size: 1930440
   - relpath: processed/train/data-00000-of-00001.arrow
     md5: 2b4b43684bcc47551931d6b4fd1bd354
     size: 694528
@@ -51,6 +54,9 @@ outs:
       remote_storage:
         etag: 08c49984c6b5d583031001
         version_id: '1704978951507140'
+  - relpath: processed/val/cache-542da1be5f6c1da7.arrow
+    md5: 380542641b0da14b9f4102ed628c38b1
+    size: 661024
   - relpath: processed/val/data-00000-of-00001.arrow
     md5: 68d8086049bccbbaaefcc09462fac76f
     size: 238640
