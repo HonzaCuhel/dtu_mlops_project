@@ -9,7 +9,7 @@ def eval_model(model_path, dataset_path):
     m_pipeline = pipeline(
         "text-classification",
         model=model_path,
-        tokenizer=AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall"),
+        tokenizer=AutoTokenizer.from_pretrained("microsoft/deberta-v3-xsmall", use_fast=False),
     )
     # Load dataset
     dataset = load_from_disk(dataset_path)
