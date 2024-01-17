@@ -22,3 +22,5 @@ steps:
   - 'europe-west1'
   id: 'Deploy container image to Cloud Run'
   waitFor: ["Push the container image to Container Registry"]
+options:
+  logging: CLOUD_LOGGING_ONLY
