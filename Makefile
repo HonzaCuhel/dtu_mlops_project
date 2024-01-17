@@ -40,6 +40,12 @@ clean:
 data:
 	python $(PROJECT_NAME)/data/make_dataset.py
 
+
+push_train_docker:
+	docker build --platform linux/amd64 -t trainer_image -f dockerfiles/train_model.dockerfile .
+	docker tag trainer_image gcr.io/sacred-flight-410716/trainer_image:latest
+	docker push gcr.io/sacred-flight-410716/trainer_image:latest
+
 #################################################################################
 # Documentation RULES                                                           #
 #################################################################################

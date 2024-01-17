@@ -28,7 +28,7 @@ def compute_metrics(eval_pred):
     return accuracy.compute(predictions=predictions, references=labels)
 
 
-@hydra.main(config_path="config", config_name="train_config.yaml", version_base="1.1")
+@hydra.main(config_path="config", config_name="train_config_v2.yaml", version_base="1.1")
 def main(cfg):
     # Hypereparameters
     model_id = cfg.hyperparameters.model_id
