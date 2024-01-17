@@ -7,7 +7,7 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://dtu-mlops-twitter-financial-news-sentiment/models/financial_tweets_sentiment_model/model.safetensors', './models/financial_tweets_sentiment_model/model.safetensors']
   id: 'Copy model.safetensor from Google Cloud Storage'
-  wait: ["Copy config.json from Google Cloud Storage"]
+  waitFor: ["Copy config.json from Google Cloud Storage"]
 
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
