@@ -26,17 +26,22 @@ def predict(text: str) -> str:
         logits = model(**encoded_input).logits
 
     scores = logits.softmax(dim=-1)
+    print("-" * 50)
+    print(f"INPUT: {text}")
     print(f"SCORES: {scores}")
     best_id = scores.argmax(dim=-1).item()
     prediction = id2label[best_id]
-    print(f"Prediction: {prediction}")
+    print(f"PREDICTION: {prediction}")
+    print("-" * 50)
 
     return prediction
 
 
 if __name__ == "__main__":
     # text = "I think $TSLA is going to the moon!"
-    text = None
-    while text != "exit":
-        text = input("Enter text to predict sentiment: ")
+    text = ""
+    while True:
+        text = input("Enter text to predict sentiment (to exit type 'exit'): ")
+        if text.lower() == "exit":
+            break
         predict(text)
