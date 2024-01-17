@@ -123,3 +123,5 @@ zc.lockfile==3.0.post1
 transformers
 evaluate
 wandb
+ruff==0.1.11
+pre-commit

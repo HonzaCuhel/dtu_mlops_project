@@ -1,15 +1,14 @@
+import evaluate
+import numpy as np
+import wandb
+from datasets import load_from_disk
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
     DataCollatorWithPadding,
-    TrainingArguments,
     Trainer,
+    TrainingArguments,
 )
-import evaluate
-import numpy as np
-from datasets import load_from_disk
-import wandb
-
 
 accuracy = evaluate.load("accuracy")
 
@@ -33,11 +32,11 @@ def main():
     weight_decay = 0.01
     eval_strategy = "epoch"
     save_strategy = "epoch"
-    
+
     wandb.init(project="train", entity="dtu-mlops-financial-tweets")
 
     # Load data
-    #tw_fin = load_dataset("zeroshot/twitter-financial-news-sentiment")
+    # tw_fin = load_dataset("zeroshot/twitter-financial-news-sentiment")
     train_set = load_from_disk("data/processed/train")
     val_set = load_from_disk("data/processed/val")
 
@@ -50,16 +49,8 @@ def main():
     tokenized_val_set = val_set.map(preprocess_function, batched=True)
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 
-    id2label = {
-        0: "Bearish", 
-        1: "Bullish", 
-        2: "Neutral"
-    } 
-    label2id = {
-        "Bearish": 0, 
-        "Bullish": 1, 
-        "Neutral": 2
-    }  
+    id2label = {0: "Bearish", 1: "Bullish", 2: "Neutral"}
+    label2id = {"Bearish": 0, "Bullish": 1, "Neutral": 2}
     # Load model
     model = AutoModelForSequenceClassification.from_pretrained(
         model_id, num_labels=3, id2label=id2label, label2id=label2id
@@ -74,7 +65,7 @@ def main():
         weight_decay=weight_decay,
         evaluation_strategy=eval_strategy,
         save_strategy=save_strategy,
-        load_best_model_at_end=True
+        load_best_model_at_end=True,
     )
     # Create trainer
     trainer = Trainer(
