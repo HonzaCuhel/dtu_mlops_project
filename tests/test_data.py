@@ -1,13 +1,15 @@
-import pytest
 import os.path
+
+import pytest
 from datasets import load_from_disk
+
 from tests import _PATH_DATA
 
 
 def _check_dataset(dataset, split):
     labels = set()
     for example in dataset:
-        assert isinstance(example["text"], str) ,f"Invalid input type found in {split} dataset"
+        assert isinstance(example["text"], str), f"Invalid input type found in {split} dataset"
         assert isinstance(example["label"], int), f"Invalid label type found in {split} dataset"
         assert example["label"] in [0, 1, 2], f"Invalid label found in {split} dataset"
         labels.add(example["label"])

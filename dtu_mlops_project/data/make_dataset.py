@@ -1,5 +1,6 @@
-from datasets import load_dataset, load_from_disk
 import os
+
+from datasets import load_dataset, load_from_disk
 
 
 def main():
@@ -18,5 +19,5 @@ def main():
     val_set.save_to_disk(os.path.join("data", "processed", "val"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

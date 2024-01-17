@@ -1,5 +1,6 @@
 import logging
 import sys
+
 import hydra
 
 logging.basicConfig(stream=sys.stdout)
