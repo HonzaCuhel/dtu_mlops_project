@@ -1,18 +1,14 @@
 hyperparameters:
   seed: 228
   model_id: microsoft/deberta-v3-xsmall
-  lr: 1e-4
-  batch_size: 32
-  num_epochs: 1
-  output_dir: models/financial_tweets_sentiment_model
+  lr: 3e-05
+  batch_size: 64
+  num_epochs: 10
+  output_dir: models/financial_tweets_sentiment_model_10_ep
   train_log_dir: ./runs
   weight_decay: 0.01
   eval_strategy: epoch
   save_strategy: epoch
-
-  # for LoRA if used
-  alpha: 32
-  lora_rank: 16
 
 dataset:
   train_set_path: data/processed/train
