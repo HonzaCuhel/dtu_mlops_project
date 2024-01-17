@@ -2,7 +2,7 @@ name: "Run tests with pip cache"
 
 on:
   push:
-    branches: [ master, main, dev ]
+    branches: [ master, main, dev, add_tests ]
   pull_request:
     branches: [ master, main, dev ]
 
