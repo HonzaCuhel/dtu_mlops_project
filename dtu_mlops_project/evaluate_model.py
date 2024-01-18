@@ -26,12 +26,11 @@ def eval_model(model_path, dataset_path):
             "Neutral": 2
         }
     )
-    # print(results)
     print(f"Accuracy: {results['accuracy']}")
     return results
 
 
 if __name__ == "__main__":
-    model_path = "./models/financial_tweets_sentiment_model_10_ep/"
+    model_path = "./models/financial_tweets_sentiment_model/"
     dataset_path = "./data/processed/test"
     eval_model(model_path, dataset_path)
