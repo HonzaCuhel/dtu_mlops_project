@@ -1,7 +1,12 @@
+import logging
+import os
+import sys
+
 import evaluate
+import hydra
 import numpy as np
-import wandb
 from datasets import load_from_disk
+from hydra.utils import get_original_cwd
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
@@ -10,14 +15,7 @@ from transformers import (
     TrainingArguments,
 )
 
-import evaluate
-from datasets import load_from_disk
 import wandb
-import logging
-import sys
-import hydra
-from hydra.utils import get_original_cwd
-import os
 
 logging.basicConfig(stream=sys.stdout)
 logger = logging.getLogger(__name__)

@@ -16,7 +16,6 @@ def eval_model(model_path, dataset_path):
     # Evaluate
     evaluator = TextClassificationEvaluator()
     results = evaluator.compute(
-        m_pipeline, dataset, metric="accuracy", label_mapping={"Bearish": 0, "Bullish": 1, "Neutral": 2}
         m_pipeline,
         dataset,
         metric="accuracy",

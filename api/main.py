@@ -1,10 +1,10 @@
-from fastapi import FastAPI
 from http import HTTPStatus
 from typing import List
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-from prometheus_fastapi_instrumentator import Instrumentator
-import torch
 
+import torch
+from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 app = FastAPI()
 Instrumentator().instrument(app).expose(app)

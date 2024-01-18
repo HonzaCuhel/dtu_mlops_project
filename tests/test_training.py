@@ -1,7 +1,9 @@
-import pytest
 import os
 import shutil
 from types import SimpleNamespace
+
+import pytest
+
 from dtu_mlops_project.train_model import main as train_func
 from tests import _PATH_DATA
 
