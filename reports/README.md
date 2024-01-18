@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
-27
+--- 27 ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- s240507, question 2 fill here ---
+--- s240507, s233562 ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -129,9 +129,9 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
-
-**TODO** We used Hugging Face to obtain the dataset and the baseline model. With that, we used the Transformers library to train the model. We used DVC for data versioning, Weights and Biases to track the training cycles, and Hydra to ensure reproducibility. Also, Google Cloud Storage was used to store the split dataset along with the model weights.
+--- For our project, we decided to work with the Hugging Face framework. We utilized this platform to obtain both the dataset and the baseline model. Specifically, we utilized the "Twitter Financial News dataset", an analysis dataset featuring an annotated corpus of finance-related tweets.
+As for the baseline model, we selected "DeBERTaV3" from Hugging Face's extensive model repository. Notably, this model stood out due to its efficiency, regardless of the significantly fewer parameters compared to other alternatives. Also, leveraging the Transformers library, which is provided by Hugging Face, we manipulated and fine-tuned the selected model to fulfill the specific requirements of our task.
+---
 
 ## Coding environment
 
@@ -230,7 +230,7 @@ Yes, we used a cookiecutter template to initialize the project structure. Specif
 >
 > Answer:
 
-Yes, during the development we worked on separate branches, which were created for each task for each person. After the person was done with his task, he created a pull request on GitHub and each of the other team members needed to approve it before merging.
+---Yes, during the development we worked on separate branches, which were created for each task for each person. After the person was done with his task, he created a pull request on GitHub and each of the other team members needed to approve it before merging.
 
 We had the `main` branch for deployment and the `dev` branch to merge our pull requests to.
 
@@ -239,6 +239,7 @@ An example of our development workflow:
 * This person creates a new branch from `dev` and works in it.
 * After he is done, he publishes his branch to GitHub and creates a PR to merge into `dev`.
 * In the end, we all approve the PR and finally merge it.
+---
 
 ### Question 10
 
@@ -288,7 +289,7 @@ An example of our development workflow:
 >
 > Answer:
 
-Yes, to use the config files we utilized Hydra. I.e. the config file for training is located in `config/train_config.yaml`. It is directly embedded in the `train_model.py` script, which could be further improved to passing the config name as an argument. After each training cycle, Hydra saves the information of the used config file to the `outpurs/` folder. This folder is not tracked on GitHub.
+---Yes, to use the config files we utilized Hydra. I.e. the config file for training is located in `config/train_config.yaml`. It is directly embedded in the `train_model.py` script, which could be further improved to passing the config name as an argument. After each training cycle, Hydra saves the information of the used config file to the `outpurs/` folder. This folder is not tracked on GitHub.---
 
 ### Question 13
 
@@ -338,9 +339,10 @@ Yes, to use the config files we utilized Hydra. I.e. the config file for trainin
 >
 > Answer:
 
-Initially, our project setup includes two Docker files, needed for the deployment and training of our machine learning model. These files are conveniently located in the `dockerfiles/`` directory. Specifically, we have: [predict_model.dockerfile](../dockerfiles/predict_model.dockerfile) dedicated to configuring the prediction environment, and [train_model.dockerfile](../dockerfiles/train_model.dockerfile) designed for setting up the training environment.
+---Initially, our project setup includes two Docker files, needed for the deployment and training of our machine learning model. These files are conveniently located in the `dockerfiles/`` directory. Specifically, we have: [predict_model.dockerfile](../dockerfiles/predict_model.dockerfile) dedicated to configuring the prediction environment, and [train_model.dockerfile](../dockerfiles/train_model.dockerfile) designed for setting up the training environment.
 
 Detailed instructions for utilizing these Docker files are written in the main README.md file of our repository. Specifically, it also describes how to execute the training container with a shared volume, ensuring that the model weights generated during the training process are conveniently stored on the host PC to the local `models/` directory.
+---
 
 ### Question 16
 
@@ -355,8 +357,10 @@ Detailed instructions for utilizing these Docker files are written in the main R
 >
 > Answer:
 
---- question 16 fill here ---
-
+--- 
+In the course of our experiments, our debugging approach relied on the VSCode debugger. Our debugging process was to firstly, identify the nature of the issue, by strategically inserting print statements into the code to understand the execution flow and monitor values at different stages. By setting breakpoints, inspecting variables, and stepping through the code, we traced the source of errors and fixed them. In general, our debugging process was iterative and collaborative. Continuous testing and refinement were key to identifying and resolving issues. 
+For the styling of our code we used Ruff, which contributed to consistency and cleanliness. By enforcing a uniform style for our code, we managed to not only enhance readability but to also prevent any potential issues or inconsistencies in the code.
+---
 ## Working in the cloud
 
 > In the following section we would like to know more about your experience when developing in the cloud.
