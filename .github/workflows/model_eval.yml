@@ -38,11 +38,9 @@ jobs:
         pip install -r requirements.txt
 
     - uses: iterative/setup-dvc@v1
-    - name: Get model
-      run: dvc pull models
+    - name: Get model and data
+      run: dvc pull
 
     - name: Evaluate model
       run: |
-        pwd >> $GITHUB_STEP_SUMMARY
-        ls >> $GITHUB_STEP_SUMMARY
         python dtu_mlops_project/evaluate_model.py >> $GITHUB_STEP_SUMMARY
