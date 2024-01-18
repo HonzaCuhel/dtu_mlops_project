@@ -10,6 +10,11 @@ A short description of the project.
 
 <b>Date:</b> 2024
 
+<b>Deployed FE app:</b> [link](https://fe-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app)
+
+<b>Deployed API server:</b> [link](https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app)
+
+
 ## Overall goal of the project
 The goal of the project is to use power of the Natural Language Processing to solve a classification task of predicting sentiment of finance-related tweets.
 
@@ -98,6 +103,13 @@ response = requests.post(url, headers=headers, json=data)
 print(response.json())
 ```
 
+#### Local Build of Front-End App for Inference:
+```shell
+make build_fe_local
+```
+
+Now, go to [here](http://0.0.0.0:8501) to open the app.
+
 ## Project structure
 
 The directory structure of the project looks like this:
@@ -122,19 +134,6 @@ The directory structure of the project looks like this:
 │   │
 │   └── source/          <- Source directory for documentation files
 │
-├── models               <- Trained and serialized models, model predictions, or model summaries
-│
-├── pyproject.toml       <- Project configuration file
-│
-├── reports              <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures          <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt     <- The requirements file for reproducing the analysis environment
-│
-├── requirements_dev.txt <- The requirements file for reproducing the analysis environment
-│
-├── tests                <- Test files
-│
 ├── dtu_mlops_project  <- Source code for use in this project.
 │   │
 │   ├── __init__.py      <- Makes folder a Python module
@@ -148,6 +147,21 @@ The directory structure of the project looks like this:
 │   ├── hydra_usage_example.py  <- script for showing how to work with hydra
 │   ├── train_model.py          <- script for training the model
 │   └── predict_model.py        <- script for predicting from a model
+│
+├── front_end            <- Source code for building a FE app
+│
+├── models               <- Trained and serialized models, model predictions, or model summaries
+│
+├── pyproject.toml       <- Project configuration file
+│
+├── reports              <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures          <- Generated graphics and figures to be used in reporting
+│
+├── requirements.txt     <- The requirements file for reproducing the analysis environment
+│
+├── requirements_dev.txt <- The requirements file for reproducing the analysis environment
+│
+├── tests                <- Test files
 │
 └── LICENSE              <- Open-source license if one is chosen
 ```

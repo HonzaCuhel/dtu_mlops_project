@@ -50,6 +50,11 @@ build_api_local: pull_data
 	docker build -t deployed_model:latest -f api/Dockerfile .
 	docker run -p 8080:8080 -e PORT=8080 deployed_model:latest
 
+## Build FE for inferencing the model
+build_fe_local:
+	docker build -t front_end:latest -f front_end/Dockerfile .
+	docker run -p 8501:8501 front_end:latest
+
 ## Training model on GPU
 train_gpu_model: pull_data
 	docker build -t trainer_image -f dockerfiles/train_model.dockerfile .
