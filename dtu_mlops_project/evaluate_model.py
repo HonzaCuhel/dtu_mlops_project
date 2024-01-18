@@ -19,6 +19,7 @@ def eval_model(model_path, dataset_path):
         m_pipeline, dataset, metric="accuracy", label_mapping={"Bearish": 0, "Bullish": 1, "Neutral": 2}
     )
     print(f"Model accuracy: {results['accuracy']*100}%")
+
     return results
 
 

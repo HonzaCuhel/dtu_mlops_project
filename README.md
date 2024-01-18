@@ -14,6 +14,7 @@ A short description of the project.
 
 <b>Deployed API server:</b> [link](https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app)
 
+
 ## Overall goal of the project
 The goal of the project is to use power of the Natural Language Processing to solve a classification task of predicting sentiment of finance-related tweets.
 
