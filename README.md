@@ -26,6 +26,10 @@ This DeBERTa model has significantly fewer parameters compared to the classical 
 
 Since the DeBERTa model is available on Hugging Face, the inference and training processes should be straightforward, allowing us to spend more time on the MLOps aspects of the project.
 
+## Results
+
+To see the wandb logs, please refer [here](https://wandb.ai/dtu-mlops-financial-tweets/train/?workspace=user-).
+
 ## Commands
 
 #### Process raw data into processed data
@@ -91,7 +95,6 @@ data = [
 response = requests.post(url, headers=headers, json=data)
 print(response.json())
 ```
-
 
 ## Project structure
 
