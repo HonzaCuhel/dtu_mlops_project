@@ -23,7 +23,7 @@ def train(cfg):
     # Training or inference:
     # base_model = AutoModelForCausalLM.from_pretrained(...)
 
-    logger.info("Training started.") # saved to ./outputs/date/time/hydra_usage_example.log
+    logger.info("Training started.")  # saved to ./outputs/date/time/hydra_usage_example.log
     logger.info(f"Model weights are stored to: {store_weights_to}...")
 
 

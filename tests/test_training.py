@@ -1,7 +1,9 @@
-import pytest
 import os
 import shutil
 from types import SimpleNamespace
+
+import pytest
+
 from dtu_mlops_project.train_model import main as train_func
 from tests import _PATH_DATA
 
@@ -18,12 +20,9 @@ def test_training():
             "weight_decay": 0.01,
             "eval_strategy": "epoch",
             "save_strategy": "epoch",
-            "use_wandb": False
+            "use_wandb": False,
         },
-        "dataset": {
-            "train_set_path": "tests/data/tiny_train",
-            "val_set_path": "tests/data/tiny_train"
-        }
+        "dataset": {"train_set_path": "tests/data/tiny_train", "val_set_path": "tests/data/tiny_train"},
     }
     cfg = SimpleNamespace()
     cfg.hyperparameters = SimpleNamespace(**cfg_dict["hyperparameters"])

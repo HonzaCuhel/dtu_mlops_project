@@ -1,8 +1,10 @@
-import pytest
 import os.path
+
+import pytest
 from datasets import load_from_disk
-from tests import _PATH_DATA
+
 from dtu_mlops_project.predict_model import predict
+from tests import _PATH_DATA
 
 
 def test_prediction():

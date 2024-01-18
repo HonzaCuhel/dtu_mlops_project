@@ -1,10 +1,10 @@
-from fastapi import FastAPI
 from http import HTTPStatus
 from typing import List
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-from prometheus_fastapi_instrumentator import Instrumentator
-import torch
 
+import torch
+from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 app = FastAPI()
 Instrumentator().instrument(app).expose(app)
@@ -21,9 +21,10 @@ if torch.cuda.is_available():
 model.to(device)
 model.eval()
 
+
 @app.get("/")
 def root():
-    """ Health check."""
+    """Health check."""
     response = {
         "message": HTTPStatus.OK.phrase,
         "status-code": HTTPStatus.OK,
@@ -48,13 +49,9 @@ def predict_sentiment(texts: List[str]):
     # Classify
     preds = classify(texts)
 
-    response = {
-        "input": texts,
-        "message": HTTPStatus.OK.phrase,
-        "status-code": HTTPStatus.OK,
-        "output": preds
-    }
+    response = {"input": texts, "message": HTTPStatus.OK.phrase, "status-code": HTTPStatus.OK, "output": preds}
     return response
+
 
 # uvicorn --reload --port 8000 main:app
 # reload => when saved, the server will reload
