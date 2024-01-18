@@ -28,9 +28,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.pip-cache.outputs.dir }}
-        key: chached_test${{ hashFiles('**/requirements.txt') }}
+        key: cached_eval${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
-          chached_test
+          cached_eval
 
     - name: Install dependencies
       run: |
@@ -38,10 +38,11 @@ jobs:
         pip install -r requirements.txt
 
     - uses: iterative/setup-dvc@v1
-    - name: Get data
-      run: dvc pull
+    - name: Get model
+      run: dvc pull models
 
     - name: Evaluate model
       run: |
         pwd >> $GITHUB_STEP_SUMMARY
         ls >> $GITHUB_STEP_SUMMARY
+        python dtu_mlops_project/evaluate_model.py >> $GITHUB_STEP_SUMMARY
