@@ -2,7 +2,7 @@ name: "Evaluate current model"
 
 on:
   push:
-    branches: [ main, dev, ci_eval ]
+    branches: [ main, dev ]
   pull_request:
     branches: [ main, dev ]
 
