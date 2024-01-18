@@ -8,6 +8,8 @@ A short description of the project.
 - Mikhail Poludin
 - Antonis Pavlou
 
+<b>Date:</b> 2024
+
 ## Overall goal of the project
 The goal of the project is to use power of the Natural Language Processing to solve a classification task of predicting sentiment of finance-related tweets.
 
