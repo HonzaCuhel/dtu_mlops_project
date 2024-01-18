@@ -85,7 +85,7 @@ curl -X 'POST' \
 ```python
 import requests
 
-url = "https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app/predict_batch/"
+url = "http://0.0.0.0:8080/predict_batch/"
 headers = {
     "accept": "application/json",
     "Content-Type": "application/json",
@@ -130,7 +130,7 @@ The directory structure of the project looks like this:
 │   └── figures          <- Generated graphics and figures to be used in reporting
 │
 ├── requirements.txt     <- The requirements file for reproducing the analysis environment
-|
+│
 ├── requirements_dev.txt <- The requirements file for reproducing the analysis environment
 │
 ├── tests                <- Test files
