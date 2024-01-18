@@ -100,7 +100,7 @@ data = [
 ]
 
 response = requests.post(url, headers=headers, json=data)
-print(sresponse.json())
+print(response.json())
 ```
 
 #### Local Build of Front-End App for Inference:
