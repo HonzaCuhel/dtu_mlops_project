@@ -4,6 +4,7 @@ from datasets import load_dataset, load_from_disk
 
 
 def main():
+    """Download and preprocess data."""
     if os.path.exists("data/raw/train") and os.path.exists("data/raw/val"):
         train_set_raw = load_from_disk(os.path.join("data", "raw", "train"))
         val_set = load_from_disk(os.path.join("data", "raw", "val"))

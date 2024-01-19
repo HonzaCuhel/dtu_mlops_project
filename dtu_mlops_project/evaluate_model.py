@@ -3,8 +3,8 @@ from evaluate import TextClassificationEvaluator
 from transformers import AutoTokenizer, pipeline
 
 
-def eval_model(model_path, dataset_path):
-    """Evaluate model on dataset."""
+def eval_model(model_path: str, dataset_path: str) -> dict:
+    """Evaluate trained model on test dataset."""
     # Load model
     m_pipeline = pipeline(
         "text-classification",

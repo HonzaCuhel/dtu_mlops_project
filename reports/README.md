@@ -50,43 +50,43 @@ end of the project.
 
 ### Week 1
 
-* [ ] Create a git repository
-* [ ] Make sure that all team members have write access to the github repository
-* [ ] Create a dedicated environment for you project to keep track of your packages
-* [ ] Create the initial file structure using cookiecutter
-* [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
-* [ ] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
-* [ ] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
-* [ ] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the github repository
+* [x] Create a dedicated environment for you project to keep track of your packages
+* [x] Create the initial file structure using cookiecutter
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Add a model file and a training script and get that running
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to comply with good coding practices (`pep8`) while doing the project
+* [x] Do a bit of code typing and remember to document essential parts of your code
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
 * [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
-* [ ] Get some continuous integration running on the github repository
-* [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
-* [ ] Create a trigger workflow for automatically building your docker images
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
+* [x] Get some continuous integration running on the github repository
+* [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [x] Create a trigger workflow for automatically building your docker images
 * [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
 * [ ] Check how robust your model is towards data drifting
-* [ ] Setup monitoring for the system telemetry of your deployed model
+* [x] Setup monitoring for the system telemetry of your deployed model
 * [ ] Setup monitoring for the performance of your deployed model
 * [ ] If applicable, play around with distributed data loading
 * [ ] If applicable, play around with distributed model training
@@ -94,18 +94,18 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [x] Revisit your initial project description. Did the project turn out as you wanted?
+* [x] Make sure all group members have a understanding about all parts of the project
+* [x] Uploaded all your code to github
 
 ## Group information
 
 ### Question 1
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
-> Answer:
+> Answer: 
 
---- 27 ---
+27
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- s240507, s233562 ---
+s240507, s233562, s240498, s240509
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -129,9 +129,9 @@ end of the project.
 >
 > Answer:
 
---- For our project, we decided to work with the Hugging Face framework. We utilized this platform to obtain both the dataset and the baseline model. Specifically, we utilized the "Twitter Financial News dataset", an analysis dataset featuring an annotated corpus of finance-related tweets.
+For our project, we decided to work with the Hugging Face framework. We utilized this platform to obtain both the dataset and the baseline model. Specifically, we utilized the "Twitter Financial News dataset", an analysis dataset featuring an annotated corpus of finance-related tweets.
 As for the baseline model, we selected "DeBERTaV3" from Hugging Face's extensive model repository. Notably, this model stood out due to its efficiency, regardless of the significantly fewer parameters compared to other alternatives. Also, leveraging the Transformers library, which is provided by Hugging Face, we manipulated and fine-tuned the selected model to fulfill the specific requirements of our task.
----
+
 
 ## Coding environment
 
@@ -150,7 +150,6 @@ As for the baseline model, we selected "DeBERTaV3" from Hugging Face's extensive
 >
 > Answer:
 
---- question 4 fill here ---
 To ensure easy installation of all dependencies we used the `requirements.txt` file. We tried using both `pip` and `pipreqs` to generate the file. First, `pip freeze > requirements.txt` was used, but later we switched to generation with `pipreqs` and added a couple of additional dependencies manually (e.g. *sentencepiece*). This way, the `requirements.txt` looks more sane.
 
 As we have successfully launched both training and inference inside a Docker container, which installs all the dependencies with `RUN pip install -r requirements.txt --no-cache-dir` and `RUN pip install . --no-deps --no-cache-dir`, we know that the new team member wouldn't struggle to do the same.
@@ -168,20 +167,23 @@ As we have successfully launched both training and inference inside a Docker con
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+Yes, we made use of the MLOps cookiecutter template that was provided by the course, so the structure is derived from it mostly. So, there are folders for docker files, for the source code (training and evaluation), for data and models from DVC, for the deployment, tests, CI.
+Inside the source code folder: `dtu_mlops_project/` we split it up even more for the folders for config files, visualizations and models definitions. 
 
-Yes, we used a cookiecutter template to initialize the project structure. Specifically, the **TODO** template...
+On the other hand we didn’t use the `notebooks/` folder and `docs/`. We haven’t touched `notebooks/` because Jupiters weren’t even utilized for development. We did not generate the documentation because we decided to focus on more interesting things :D. However, we decided to leave the folder for possible future improvements.
 
 ### Question 6
 
 > **Did you implement any rules for code quality and format? Additionally, explain with your own words why these**
-> **concepts matters in larger projects.**
+> **concepts matter in larger projects.**
 >
 > Answer length: 50-100 words.
 >
 > Answer:
 
---- question 6 fill here ---
+Yes, we used `ruff` and `pre-commit` to check and correct the code formatting. Also, we integrated those checks into the CI\CD pipeline. It checks for code quality and also tries building on different operating systems (windows, ubuntu, macos).
+
+Code quality should be checked in the larger projects, because it could easily become unreadable for developers. Also, it is good to know that all the files have the same formatting, because it makes sense for the project.
 
 ## Version control
 
@@ -200,7 +202,7 @@ Yes, we used a cookiecutter template to initialize the project structure. Specif
 >
 > Answer:
 
---- question 7 fill here ---
+We implemented 3 tests in total. One of them checks that our processed data can be pulled from DVC and has the correct format. Another checks that the model training function runs successfully and saves the trained model weights. The last test ensures the inference pipeline runs as expected by feeding it with 10 randomly selected samples from the test set and checking the outputs. Our CI pipeline also includes automatic checks for formatting issues with ruff and automatic model evaluation.
 
 ### Question 8
 
@@ -215,11 +217,11 @@ Yes, we used a cookiecutter template to initialize the project structure. Specif
 >
 > Answer:
 
---- question 8 fill here ---
+We reached a 95% code coverage with our tests. This number doesn’t take into account the scripts for data processing and model evaluation. The data processing script is not run regularly, so we focus on testing the format of the actual version-controlled data files. The evaluation script is run in a different workflow to automatically asses model performance, and we do not deem it necessary to create extra unit tests for it. Our least covered file is `predict_model.py` with 79% coverage, because we only test the predict function and not the main loop, which just keeps calling the function for incomming user inputs. We are thus satisfied with the coverage we currently achieve.
 
 ### Question 9
 
-> **Did you workflow include using branches and pull requests? If yes, explain how. If not, explain how branches and**
+> **Did your workflow include using branches and pull requests? If yes, explain how. If not, explain how branches and**
 > **pull request can help improve version control.**
 >
 > Answer length: 100-200 words.
@@ -230,7 +232,7 @@ Yes, we used a cookiecutter template to initialize the project structure. Specif
 >
 > Answer:
 
----Yes, during the development we worked on separate branches, which were created for each task for each person. After the person was done with his task, he created a pull request on GitHub and each of the other team members needed to approve it before merging.
+Yes, during the development we worked on separate branches, which were created for each task for each person. After the person was done with his task, he created a pull request on GitHub and each of the other team members needed to approve it before merging.
 
 We had the `main` branch for deployment and the `dev` branch to merge our pull requests to.
 
@@ -239,7 +241,6 @@ An example of our development workflow:
 * This person creates a new branch from `dev` and works in it.
 * After he is done, he publishes his branch to GitHub and creates a PR to merge into `dev`.
 * In the end, we all approve the PR and finally merge it.
----
 
 ### Question 10
 
@@ -254,7 +255,9 @@ An example of our development workflow:
 >
 > Answer:
 
---- question 10 fill here ---
+Yes, we used Data Version Control (DVC) for managing data in our project. For instance, the training and testing data instances in the `data/` folder and the learned model weights stored in the `models/` folder. It simplified sharing the data between developers. Because when one person created new files (for example the train and test datasets), did `dvc push`, then others can easily download the changes to their pc with a simple `dvc pull`. 
+
+However, since we didn’t have much with DVC before the course, we once had a problem with synchronization of newly trained model weights. The CI pipeline couldn’t pull the data and we spent 3 hours fixing the problem.
 
 ### Question 11
 
@@ -270,7 +273,13 @@ An example of our development workflow:
 >
 > Answer:
 
---- question 11 fill here ---
+In our continuous integration (CI) pipeline, we have structured our workflows into three distinct files. The initial ensures code quality by employing the `ruff check --fix` and `ruff format` commands, effectively identifying and rectifying any formatting issues. This approach ensures that our code adheres to the predefined standards, enhancing readability and maintainability.
+
+Our second workflow focuses on the execution of unit tests, a fundamental aspect of validating the functionality of our codebase. Leveraging caching mechanisms expedites dependency installation, optimizing the overall testing process. Furthermore, we have configured this workflow to operate across multiple major operating systems, namely Windows, macOS, and Ubuntu, while also testing on two recent Python versions, 3.10 and 3.11. Post-testing, an insightful textual coverage report is generated, offering a comprehensive overview of the code's test coverage.
+
+The third and final workflow in our CI arsenal is designed to evaluate the latest model version against our test dataset, providing a crucial assessment of its performance. This workflow, exclusively executed on Ubuntu and Python 3.11, leverages cached dependency installation for efficiency. The obtained results are then seamlessly integrated into the job summary, offering a quick and comprehensive snapshot of the model's current status. 
+
+All three workflow files can be accessed [here](https://github.com/HonzaCuhel/dtu_mlops_project/tree/main/.github/workflows).
 
 ## Running code and tracking experiments
 
@@ -289,7 +298,7 @@ An example of our development workflow:
 >
 > Answer:
 
----Yes, to use the config files we utilized Hydra. I.e. the config file for training is located in `config/train_config.yaml`. It is directly embedded in the `train_model.py` script, which could be further improved to passing the config name as an argument. After each training cycle, Hydra saves the information of the used config file to the `outpurs/` folder. This folder is not tracked on GitHub.---
+Yes, to use the config files we utilized Hydra. I.e. the config file for training is located in `config/train_config.yaml`. It is directly embedded in the `train_model.py` script, which could be further improved by passing the config name as an argument. After each training cycle, Hydra saves the information of the used config file to the `outpurs/` folder. This folder is not tracked on GitHub.
 
 ### Question 13
 
@@ -304,7 +313,9 @@ An example of our development workflow:
 >
 > Answer:
 
---- question 13 fill here ---
+First of all, we utilized logging. During the training Hydra was saving the logs to the `outputs/` folder. The information inside a time-stamped subfolder contains all the hyperparameters used to run the experiment that were specified in the hydra config file. However, we decided to leave it only locally and not share the logs e.g. to GitHub. We also used Weights and Biases (as described below) to track the learning progress. Which can enable us to compare different runs.
+
+We’ve also set up the random seed in the config file, so that future experiments with the set seed would have the same initial model weights, which is important to ensure the same resulting model.
 
 ### Question 14
 
@@ -321,9 +332,17 @@ An example of our development workflow:
 >
 > Answer:
 
---- question 14 fill here ---
-**TODO text**
-![my_image](figures/wandb_screen.png)
+We use Weights and Biases (W&B) to track the training of our model. A simple `wandb.init(project="train", entity="dtu-mlops-financial-tweets")` at the beginning of the training script does the job, as the weights and biases framework can work with hugging face’s Trainer automatically. 
+
+As you can see from the screenshot below we track the following metrics:
+
+* **eval/samples_per_second**. It tells us how fast the inference of the model during the evaluation proceeds. As we tried training the model on different devices, it is an interesting metric to see.
+* **eval/runtime**. This shows the overall duration of the evaluation. Not really interesting for us.
+* **eval/steps_per_second**. Similar to the first metric, it tells how fast the inference goes, just using the different metric.
+* **eval/loss**. This one is important, because it tells us how the validation loss is changing during the process of training. You can clearly see that with chosen hyperparameters the loss decreases for some time and then it starts to increase, which could mean the overfitting of the model.
+* **eval/accuracy**. This one shows us the achieved accuracy on the validation dataset. Since we trained the model on the financial tweets dataset, we had 3 classes. It computes the number of correct predictions to the total number of predictions. Again, after some time you can see that the accuracy starts to decrease, which could indicate the overfitting. After a couple of training cycles, we achieved the accuracy of **0.85** on the separate testing dataset, corresponding to **0.88** on the validation dataset.
+
+![wandb_screenshot](figures/wandb_screen.png)
 
 
 ### Question 15
@@ -339,10 +358,10 @@ An example of our development workflow:
 >
 > Answer:
 
----Initially, our project setup includes two Docker files, needed for the deployment and training of our machine learning model. These files are conveniently located in the `dockerfiles/`` directory. Specifically, we have: [predict_model.dockerfile](../dockerfiles/predict_model.dockerfile) dedicated to configuring the prediction environment, and [train_model.dockerfile](../dockerfiles/train_model.dockerfile) designed for setting up the training environment.
+Initially, our project setup includes two Docker files, needed for the deployment and training of our machine learning model. These files are conveniently located in the `dockerfiles/`` directory. Specifically, we have: [predict_model.dockerfile](../dockerfiles/predict_model.dockerfile) dedicated to configuring the prediction environment, and [train_model.dockerfile](../dockerfiles/train_model.dockerfile) designed for setting up the training environment.
 
 Detailed instructions for utilizing these Docker files are written in the main README.md file of our repository. Specifically, it also describes how to execute the training container with a shared volume, ensuring that the model weights generated during the training process are conveniently stored on the host PC to the local `models/` directory.
----
+
 
 ### Question 16
 
@@ -357,10 +376,9 @@ Detailed instructions for utilizing these Docker files are written in the main R
 >
 > Answer:
 
---- 
 In the course of our experiments, our debugging approach relied on the VSCode debugger. Our debugging process was to firstly, identify the nature of the issue, by strategically inserting print statements into the code to understand the execution flow and monitor values at different stages. By setting breakpoints, inspecting variables, and stepping through the code, we traced the source of errors and fixed them. In general, our debugging process was iterative and collaborative. Continuous testing and refinement were key to identifying and resolving issues. 
 For the styling of our code we used Ruff, which contributed to consistency and cleanliness. By enforcing a uniform style for our code, we managed to not only enhance readability but to also prevent any potential issues or inconsistencies in the code.
----
+
 ## Working in the cloud
 
 > In the following section we would like to know more about your experience when developing in the cloud.
@@ -376,7 +394,11 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 17 fill here ---
+We used the following three services: Cloud Storage, Cloud Run, Cloud Build.
+Cloud Storage is used for storing our processed data set and fine-tuned model using dvc.
+Cloud Run is used for deploying our API server and front-end applications.
+Cloud Build is used for continuous deployment of our API server and front-end applications.
+
 
 ### Question 18
 
@@ -391,7 +413,8 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 18 fill here ---
+Our goal was initially to use Google Compute engine and spin up a VM onto which we would train our model. First, we implemented the training pipeline locally, tested that it works and created a Dockerfile for it. Then we attempted to move the training to Google Cloud Compute, however, we encountered several problems, the biggest one not being able to pull the stored data set using DVC, therefore, we in the end decided to skip this step as we already had a trained model at this point in time. Since our model is fairly small and the data set as well, our experiments with the Compute engine were using only VMs without GPU.
+
 
 ### Question 19
 
@@ -400,7 +423,8 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 19 fill here ---
+![GCP bucket screenshot](figures/gcp_bucket.png)
+
 
 ### Question 20
 
@@ -409,7 +433,8 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 20 fill here ---
+![GCP container registry](figures/container_registry.png)
+
 
 ### Question 21
 
@@ -418,7 +443,7 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 21 fill here ---
+![GCP Cloud Build history](figures/cloud_build.png)
 
 ### Question 22
 
@@ -434,7 +459,18 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 22 fill here ---
+For deployment we wrapped our model into an application using FastAPI. We first tried locally serving the model, which worked. Afterwards we deployed it in the cloud, using Cloud Run. Even further we set up a continuous deployment whenever there is a push to the main branch of the repository. To invoke the service a user would call
+
+```
+curl -X 'POST' \
+'https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app/predict_batch/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '["I think $TSLA is going to the moon!"]'
+```
+
+To make the usage more user friendly, we also created a Front-End application using streamlit to test the model. We also set up the CD pipeline using Cloud Build. The FE app is available [here](https://fe-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app).
+
 
 ### Question 23
 
@@ -449,7 +485,8 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 23 fill here ---
+We added the Prometheus instrumentator to our deployed API server using the prometheus-fastapi-instrumentator python package. By doing this our application exposes the metrics on the [/metrics](https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app/metrics) endpoint. It is a list of key-value pairs about the HW usage at the moment. This could be easily integrated into Grafana to create dashboards. Apart from this, we did not implement any other monitoring, fortunately, because we are using Cloud Run to run our applications, we can easily look at the number of requests, request latencies, container CPU and memory utilization, billable container instance time and so on. This setup fulfills our requirements.
+
 
 ### Question 24
 
@@ -463,7 +500,8 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 24 fill here ---
+In total we spent 2.28$ during development. The service costing the most was Cloud Storage due to storing the splitted data set and also trained model (around 280MB).
+
 
 ## Overall discussion of project
 
@@ -480,12 +518,22 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 > Example:
 >
 > *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
-> *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
+> *Whenever we commit code and push to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
 
---- question 25 fill here ---
+![structure_picture](figures/project_structure.png)
 
+The project structure is an MLOps framework that begins with developers working on local PCs, possibly performing tasks such as training machine learning models. They utilize pre-commit hooks to maintain code quality, and subsequently, they push changes to a development (dev) branch on GitHub through pull requests from their respective personal branches.
+
+Data Version Control (DVC) plays a crucial role in this setup, integrating with Google Cloud Storage to manage and version datasets and model weights. This ensures that the data is consistently synchronized with the codebase, facilitating reproducibility and collaboration. When pull requests are submitted, Continuous Integration (CI) tests are triggered, ensuring that the new contributions do not break the existing codebase.
+
+Upon successful CI tests, changes are merged into the dev branch. The progression of changes from the dev to the main branch sets off the deployment workflows. The Google Cloud Platform (GCP) Trigger is activated by these merges, which leads to the creation of new container images that are stored in the Container Registry.
+
+For the backend, the updated model weights are downloaded directly from Google Cloud Storage, ensuring that the most recent and accurate data is used in production. The frontend of the project is developed using the Streamlit library, a popular choice for quickly crafting interactive web pages that serve as interfaces for machine learning models, particularly useful for demonstrating proofs of concept.
+
+This MLOps process is designed to be efficient, automated, and scalable, addressing the critical needs of modern machine learning and data science projects. It allows for the streamlined transition from development to deployment, ensuring that model improvements are rapidly and reliably delivered to end-users.
+ 
 ### Question 26
 
 > **Discuss the overall struggles of the project. Where did you spend most time and what did you do to overcome these**
@@ -498,7 +546,13 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 26 fill here ---
+Navigating the intricacies of managing data and models on the Google Cloud Platform (GCP) and utilizing DVC has been a complex journey for our team, marked by various challenges. A significant hurdle revolved around establishing a seamless authentication process within the team to facilitate the smooth pushing of data into the DVC storage bucket. We were unable to find any reliable authentication method and had to settle with a cumbersome manual process of granting public access to our storage bucket whenever a team member needed to push files with DVC.
+
+It also took us some time to figure out that we need to mount the storage bucket directly in Cloud Run or Compute instances to access our data, because DVC pull was not working in these cloud instances. 
+
+Our most frustrating struggle was also caused by DVC, when it deliberately deleted the remote storage information for our newly trained model weights inside the corresponding .dvc file. We spent three hours reverting git commits and trying to resync them with DVC before we found the cause of the problem and manually adjusted the models.dvc file.
+
+In essence, our journey with GCP and DVC has been a learning experience, demanding adaptability and problem-solving skills to overcome the intricacies associated with data management and model versioning in this dynamic environment.
 
 ### Question 27
 
@@ -515,8 +569,12 @@ For the styling of our code we used Ruff, which contributed to consistency and c
 >
 > Answer:
 
---- question 27 fill here --- **TODO EVERYONE**
-
 All members contributed equally to the code and this report. Each project day we had 1+ zoom calls to assign the tasks to each other for the day. Each team member was present on every call.
 
-Student s240507 was in charge of things such as: Hydra setup, Docker containers for training and inference, actual training of the model.
+Student s240507 (Mikhail) was in charge of things such as: Hydra setup, Docker containers for training and inference, actual training of the model.
+
+Student s240509 (Jan) was in charge of things such as: Weights&Biases setup, model deploying, continuous deploying, setting up DVC, Google Cloud Storage, creating make rules.
+
+Student s240498 (Adam) was responsible for creating the data processing pipeline, creating the model evaluation script, writing unit tests, and setting up the CI pipeline for testing and model evaluation.
+
+Student s233562 (Antonis) was in charge of the training setup, Ruff and Pre-commit setup and creating the frontend with Streamlit.

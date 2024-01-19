@@ -9,6 +9,7 @@ from tests import _PATH_DATA
 
 
 def test_training():
+    """Test training of the model."""
     cfg_dict = {
         "hyperparameters": {
             "model_id": "microsoft/deberta-v3-xsmall",
