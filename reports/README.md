@@ -460,11 +460,14 @@ Our goal was initially to use Google Compute engine and spin up a VM onto which 
 > Answer:
 
 For deployment we wrapped our model into an application using FastAPI. We first tried locally serving the model, which worked. Afterwards we deployed it in the cloud, using Cloud Run. Even further we set up a continuous deployment whenever there is a push to the main branch of the repository. To invoke the service a user would call
+
+```
 curl -X 'POST' \
 'https://deployed-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app/predict_batch/' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '["I think $TSLA is going to the moon!"]'
+```
 
 To make the usage more user friendly, we also created a Front-End application using streamlit to test the model. We also set up the CD pipeline using Cloud Build. The FE app is available [here](https://fe-financial-tweet-sentiment-o64hln5vbq-ew.a.run.app).
 
