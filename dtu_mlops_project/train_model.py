@@ -24,6 +24,7 @@ accuracy = evaluate.load("accuracy")
 
 
 def compute_metrics(eval_pred):
+    """Compute metrics."""
     predictions, labels = eval_pred
     predictions = np.argmax(predictions, axis=1)
     return accuracy.compute(predictions=predictions, references=labels)
@@ -31,6 +32,7 @@ def compute_metrics(eval_pred):
 
 @hydra.main(config_path="config", config_name="train_config.yaml", version_base="1.1")
 def main(cfg):
+    """Train model."""
     # Hypereparameters
     model_id = cfg.hyperparameters.model_id
     lr = cfg.hyperparameters.lr
@@ -57,6 +59,7 @@ def main(cfg):
     val_set = load_from_disk(val_set_path)
 
     def preprocess_function(examples):
+        """Tokenize data."""
         return tokenizer(examples["text"], truncation=True)
 
     tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=False)

@@ -9,16 +9,13 @@ logger = logging.getLogger(__name__)
 
 @hydra.main(config_path="config", config_name="train_config.yaml", version_base="1.1")
 def train(cfg):
-    cuda = cfg.hyperparameters.cuda
+    """Template example of using Hydra for training."""
     seed = cfg.hyperparameters.seed
-    lora_rank = cfg.hyperparameters.lora_rank
     batch_size = cfg.hyperparameters.batch_size
-    train_epochs = cfg.hyperparameters.train_epochs
-    learning_rate = cfg.hyperparameters.learning_rate
-    lr_warmup_steps = cfg.hyperparameters.lr_warmup_steps
-    store_weights_to = cfg.hyperparameters.store_weights_to
-    train_set_path = cfg.dataset.train_path
-    test_set_path = cfg.dataset.test_path
+    learning_rate = cfg.hyperparameters.lr
+    store_weights_to = cfg.hyperparameters.output_dir
+    train_set_path = cfg.dataset.train_set_path
+    val_set_path = cfg.dataset.val_set_path
 
     # Training or inference:
     # base_model = AutoModelForCausalLM.from_pretrained(...)
